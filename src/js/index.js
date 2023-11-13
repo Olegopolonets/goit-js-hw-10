@@ -1,1 +1,1 @@
-console.log('heloo');
+import { fetchBreeds } from './cat-api.js';
