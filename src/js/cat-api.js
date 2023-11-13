@@ -3,7 +3,7 @@
 // axios.defaults.headers.common['x-api-key'] = API_KEY;
 
 // axios.defaults.baseURL = BASE_URL;
-const BASE_URL = 'https://api.thecatapi.com/v1';
+const BASE_URL = 'https://api.thecatapi.com';
 const END_POINT = '/v1/breeds';
 const API_KEY =
   'live_Yy7eiFiKcvfhRTQ6mGY9ukQ7zQoyZgLCFw1Mfdp7iMlSKUQcZmv6LiNFLAu15R1n';
@@ -15,5 +15,15 @@ export function fetchBreeds() {
       throw new Error(res.status);
     }
     return res.json();
+  });
+}
+
+export function createOptionCat(res) {
+  const selectBreed = document.querySelector('.breed-select');
+  res.map(item => {
+    selectBreed.insertAdjacentHTML(
+      'beforeend',
+      `<option value=${item.id}> ${item.name} </option>`
+    );
   });
 }
