@@ -28,12 +28,12 @@ function createOptionCat(res) {
 
 function createMarkup(item) {
   return `
-  <div class=""cat-card>
+  <div class="cat-card">
     <img src="${item.url}" alt="${item.breeds[0].name}" class="cat-img" />
   
   <p class="cat-name">${item.breeds[0].name}</p>
   <p class="cat-description">${item.breeds[0].description}</p>
-  <p class="cat-temperament">${item.breeds[0].description}</p>
+  <p class="cat-temperament">Temperament:${item.breeds[0].temperament}</p>
   </div>
   `;
 }
