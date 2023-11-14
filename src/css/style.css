@@ -1,28 +1,120 @@
-@import url('https://fonts.googleapis.com/css2?family=Chicle&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,400;0,700;1,300&display=swap');
 
 * {
   box-sizing: border-box;
   margin: 0;
-  padding: 20px;
 }
+
+p {
+  padding: 0;
+}
+
 body {
-  background: #fff;
+  background-image: url(../images/bg.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
   height: 100vh;
-  font-family: 'Chicle', serif;
-  font-size: 40px;
-  /* overflow: hidden; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  overflow: hidden;
+  font-family: 'Kanit', sans-serif;
+  position: relative;
+}
+
+.loader {
+  position: absolute;
+  font-size: 60px;
+  color: white;
+  z-index: 12;
+}
+.breed-select {
+  position: absolute;
+  top: 5%;
+  left: 1%;
+  z-index: 10;
+  height: 50px;
+  width: 250px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.8);
+  font-size: 20px;
+  padding: 10px;
+  color: black;
+  font-family: 'Kanit', sans-serif;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.5s linear;
+}
+
+.show-dogs {
+  position: absolute;
+  top: 5%;
+  left: 18%;
+  z-index: 10;
+  height: 50px;
+  width: 150px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.8);
+  font-size: 20px;
+  padding: 10px;
+  color: black;
+  font-family: 'Kanit', sans-serif;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.5s linear;
+}
+
+.breed-select:hover,
+.show-dogs:hover {
+  background-color: #fff;
 }
 
 .cat-card {
   display: flex;
   align-items: center;
   flex-direction: column;
+  max-width: 600px;
+  max-height: 800px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  backdrop-filter: blur(25px);
+  padding: 20px;
 }
 
 .cat-img {
-  width: 500px;
+  width: 200px;
+  max-height: 250px;
   height: auto;
   object-fit: cover;
+  border-radius: 20px;
+  transform: scale(0.95);
+  transition: all 0.3s ease;
+}
+
+.cat-card:hover .cat-img {
+  transform: scale(1);
+}
+
+.cat-name {
+  font-size: 30px;
+  letter-spacing: 5px;
+  font-weight: 700;
+  font-style: bold;
+}
+
+.cat-description {
+  font-size: 18px;
+}
+.cat-temperament {
+  font-size: 20px;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.cat-temperament-title {
+  font-style: normal;
 }
 
 .is-hidden {

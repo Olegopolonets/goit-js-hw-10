@@ -1,19 +1,20 @@
-import Notiflix from 'notiflix';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import * as basicLightbox from 'basiclightbox';
 import { fetchBreeds, fetchCatByBreed } from './cat-api.js';
 const selectBreed = document.querySelector('.breed-select');
 const catCard = document.querySelector('.cat-info');
 const loader = document.querySelector('.loader');
-const errorMessage = document.querySelector('.error');
+const showDogs = document.querySelector('.show-dogs');
 
 fetchBreeds()
   .then(res => {
     selectBreed.classList.remove('is-hidden');
+    showDogs.classList.remove('is-hidden');
     loader.classList.add('is-hidden');
     createOptionCat(res);
   })
   .catch(err => {
-    console.log(err);
-    errorMessage.classList.remove('is-hidden');
+    Notify.failure(`❌${err} `);
   })
   .finally(() => {
     loader.classList.add('is-hidden');
@@ -33,7 +34,7 @@ function createMarkup(item) {
   
   <p class="cat-name">${item.breeds[0].name}</p>
   <p class="cat-description">${item.breeds[0].description}</p>
-  <p class="cat-temperament">Temperament:${item.breeds[0].temperament}</p>
+  <p class="cat-temperament"> <span class="cat-temperament-title">Temperament: </span>${item.breeds[0].temperament}</p>
   </div>
   `;
 }
@@ -52,8 +53,7 @@ selectBreed.addEventListener('click', () => {
         catCard.innerHTML = card;
       })
       .catch(err => {
-        console.log(err);
-        errorMessage.classList.remove('is-hidden');
+        Notify.failure(`❌I can't process it. ${err}`);
       })
       .finally(() => {
         loader.classList.add('is-hidden');
