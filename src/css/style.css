@@ -50,14 +50,6 @@ body {
   transition: all 0.5s linear;
 }
 
-.icon {
-  position: absolute;
-  fill: red;
-  z-index: 15;
-  top: 10%;
-  left: 90%;
-}
-
 .show-dogs {
   position: absolute;
   top: 5%;
@@ -96,7 +88,6 @@ body {
 .cat-img {
   width: 200px;
   max-height: 250px;
-  height: auto;
   object-fit: cover;
   border-radius: 20px;
   transform: scale(0.95);

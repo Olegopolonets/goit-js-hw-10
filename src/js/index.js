@@ -12,7 +12,7 @@ fetchBreeds()
     createOptionCat(res);
   })
   .catch(err => {
-    Notify.failure(`❌${err} `);
+    Notify.failure(`❌Oops! Something went wrong! Try reloading the page! `);
   })
   .finally(() => {
     loader.classList.add('is-hidden');
@@ -37,26 +37,23 @@ function createMarkup(item) {
   `;
 }
 
-selectBreed.addEventListener('click', () => {
-  selectBreed.classList.toggle('up');
-  if (!selectBreed.classList.contains('up')) {
-    loader.classList.remove('is-hidden');
-    catCard.classList.add('is-hidden');
-    const currentCat = selectBreed.value;
-    fetchCatByBreed(currentCat)
-      .then(res => {
-        catCard.classList.remove('is-hidden');
-        // loader.classList.add('is-hidden');
-        const card = createMarkup(res[0]);
-        catCard.innerHTML = card;
-      })
-      .catch(err => {
-        Notify.failure(`❌I can't process it. ${err}`);
-      })
-      .finally(() => {
-        loader.classList.add('is-hidden');
-      });
-  }
+selectBreed.addEventListener('change', () => {
+  loader.classList.remove('is-hidden');
+  catCard.classList.add('is-hidden');
+  const currentCat = selectBreed.value;
+  fetchCatByBreed(currentCat)
+    .then(res => {
+      catCard.classList.remove('is-hidden');
+      // loader.classList.add('is-hidden');
+      const card = createMarkup(res[0]);
+      catCard.innerHTML = card;
+    })
+    .catch(err => {
+      Notify.failure(`❌Oops! Something went wrong! Try reloading the page!`);
+    })
+    .finally(() => {
+      loader.classList.add('is-hidden');
+    });
 });
 
 const backdrop = document.querySelector('.backdrop');
