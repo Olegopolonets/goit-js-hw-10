@@ -61,10 +61,13 @@ selectBreed.addEventListener('click', () => {
 
 const backdrop = document.querySelector('.backdrop');
 const showDogs = document.querySelector('.show-dogs');
+const noButton = document.getElementById('no-btn');
+const yesButton = document.getElementById('yes-btn');
+const popup = document.getElementById('popup');
 
-showDogs.addEventListener('click', modalPay);
+showDogs.addEventListener('click', modal);
 
-function modalPay() {
+function modal() {
   backdrop.classList.add('is-open');
 }
 
@@ -76,10 +79,6 @@ backdrop.addEventListener('click', event => {
   }
 });
 
-const noButton = document.getElementById('no-btn');
-const yesButton = document.getElementById('yes-btn');
-const popup = document.getElementById('popup');
-
 noButton.addEventListener('mouseover', () => {
   noButton.style.position = 'absolute';
   noButton.style.left = Math.random() * 80 + 'vw';
@@ -88,6 +87,7 @@ noButton.addEventListener('mouseover', () => {
 
 function closeModal() {
   backdrop.classList.remove('is-open');
+  popup.style.display = 'none';
 }
 
 yesButton.addEventListener('click', () => {

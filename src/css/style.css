@@ -151,7 +151,6 @@ body {
   align-items: center;
   padding: 20px;
   background-color: bisque;
-  display: flex;
   flex-direction: column;
 }
 
@@ -161,7 +160,7 @@ body {
 }
 
 .popup {
-  display: none;
+  display: block;
   background-color: #f9f9f9;
   border: 1px solid #ccc;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
