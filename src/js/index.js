@@ -3,8 +3,7 @@ import * as basicLightbox from 'basiclightbox';
 import { fetchBreeds, fetchCatByBreed } from './cat-api.js';
 const selectBreed = document.querySelector('.breed-select');
 const catCard = document.querySelector('.cat-info');
-const loader = document.querySelector('.loader');
-const showDogs = document.querySelector('.show-dogs');
+const loader = document.querySelector('.heading');
 
 fetchBreeds()
   .then(res => {
@@ -59,4 +58,49 @@ selectBreed.addEventListener('click', () => {
         loader.classList.add('is-hidden');
       });
   }
+});
+
+const backdrop = document.querySelector('.backdrop');
+const showDogs = document.querySelector('.show-dogs');
+
+showDogs.addEventListener('click', modalPay);
+
+function modalPay() {
+  backdrop.classList.add('is-open');
+}
+
+backdrop.addEventListener('click', event => {
+  const target = event.target;
+  if (target.classList.contains('backdrop')) {
+    backdrop.classList.remove('is-open');
+    Notify.success(`Good choice`);
+  }
+});
+
+const noButton = document.getElementById('no-btn');
+const yesButton = document.getElementById('yes-btn');
+const popup = document.getElementById('popup');
+
+noButton.addEventListener('mouseover', () => {
+  noButton.style.position = 'absolute';
+  noButton.style.left = Math.random() * 80 + 'vw';
+  noButton.style.top = Math.random() * 80 + 'vh';
+});
+
+function closeModal() {
+  backdrop.classList.remove('is-open');
+}
+
+yesButton.addEventListener('click', () => {
+  popup.style.display = 'block';
+  setTimeout(() => {
+    closeModal();
+  }, 1500);
+});
+
+noButton.addEventListener('click', () => {
+  Notify.failure(`❌ Do you use cheats? Then we're done.`);
+  setTimeout(() => {
+    closeModal();
+  }, 1500);
 });
