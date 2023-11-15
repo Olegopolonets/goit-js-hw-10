@@ -1,5 +1,4 @@
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import * as basicLightbox from 'basiclightbox';
 import { fetchBreeds, fetchCatByBreed } from './cat-api.js';
 const selectBreed = document.querySelector('.breed-select');
 const catCard = document.querySelector('.cat-info');
@@ -103,4 +102,12 @@ noButton.addEventListener('click', () => {
   setTimeout(() => {
     closeModal();
   }, 1500);
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+  loader.classList.add('is-hidden');
+});
+
+loader.addEventListener('load', function () {
+  loader.classList.remove('is-hidden');
 });
